@@ -17,7 +17,7 @@ plt.title("Class Distribution")
 plt.xlabel("Class (encoded)")
 plt.ylabel("Count")
 plt.tight_layout()
-plt.savefig("class_distribution.png")
+plt.savefig("plots/class_distribution.png")
 plt.show()
 
 # Define ordered categories
@@ -39,13 +39,6 @@ print(df.describe())
 # Save cleaned version
 df.to_csv("car_cleaned.csv", index=False)
 
-# Histograms for each feature
-df.hist(bins=10, figsize=(10, 7))
-plt.suptitle("Feature Histograms")
-plt.tight_layout()
-plt.savefig("feature_histograms.png")
-plt.show()
-
 # Boxplots
 plt.figure(figsize=(12, 8))
 for i, col in enumerate(df.columns[:-1]):
@@ -53,10 +46,10 @@ for i, col in enumerate(df.columns[:-1]):
     sns.boxplot(x='class', y=col, data=round(df, 2))
     plt.title(f'{col} vs class')
 plt.tight_layout()
-plt.savefig("boxplots_vs_class.png")
+plt.savefig("plots/boxplots_vs_class.png")
 plt.show()
 
 # Pairplot (may be heavy)
 sns.pairplot(round(df, 2), hue='class', plot_kws={'alpha': 0.5})
-plt.savefig("pairplot.png")
+plt.savefig("plots/pairplot.png")
 plt.show()
