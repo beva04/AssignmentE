@@ -1,4 +1,4 @@
-# Code that generates display's are made by ChatGPT
+# Code that generates matrixes are made by ChatGPT
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
@@ -23,9 +23,9 @@ results = []
 
 
 # Model 1: Decision Tree
-dt_configs = [3, 5, 10]  # max_depth values
+dtConfig = [3, 5, 10]  # max_depth values
 
-for depth in dt_configs:
+for depth in dtConfig:
     model = DecisionTreeClassifier(max_depth=depth, random_state=42)
     model.fit(xTrain, yTrain)
     yPred = model.predict(xTest)
@@ -33,7 +33,7 @@ for depth in dt_configs:
     print(f"Decision Tree (max_depth={depth})")
     print(classification_report(yTest, yPred, digits=3))
     
-    tree.plot_tree(decision_tree=model, rounded=True, fontsize=7)
+    tree.plot_tree(decision_tree=model, rounded=True)
     cm = confusion_matrix(yTest, yPred)
     ConfusionMatrixDisplay(cm).plot()
     plt.title(f'Decision Tree (depth={depth})')
@@ -47,9 +47,9 @@ for depth in dt_configs:
 
 
 # Model 2: K-Nearest Neighbors
-knn_configs = [3, 5, 7]  # number of neighbors
+knnConfigs = [3, 5, 7]  # number of neighbors
 
-for k in knn_configs:
+for k in knnConfigs:
     model = KNeighborsClassifier(n_neighbors=k)
     model.fit(xTrain, yTrain)
     yPred = model.predict(xTest)
