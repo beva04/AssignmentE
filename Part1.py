@@ -13,11 +13,11 @@ df = pd.read_csv('data/car.data', names=columns)
 # Plot class distribution
 plt.figure(figsize=(6,4))
 sns.countplot(x='class', data=df)
-plt.title("Class Distribution")
-plt.xlabel("Class (encoded)")
-plt.ylabel("Count")
+plt.title('Class Distribution')
+plt.xlabel('Class (encoded)')
+plt.ylabel('Count')
 plt.tight_layout()
-plt.savefig("plots/class_distribution.png")
+plt.savefig('plots/class_distribution.png')
 plt.show()
 
 # Define ordered categories
@@ -33,11 +33,11 @@ df['safety'] = map_to_float(df['safety'], ['low', 'med', 'high'])
 df['class'] = map_to_float(df['class'], ['unacc', 'acc', 'good', 'vgood'])
 
 # Print summary
-print("Summary statistics:")
+print('Summary statistics:')
 print(df.describe())
 
 # Save cleaned version
-df.to_csv("car_cleaned.csv", index=False)
+df.to_csv('car_cleaned.csv', index=False)
 
 # Boxplots
 plt.figure(figsize=(12, 8))
@@ -46,10 +46,10 @@ for i, col in enumerate(df.columns[:-1]):
     sns.boxplot(x='class', y=col, data=round(df, 2))
     plt.title(f'{col} vs class')
 plt.tight_layout()
-plt.savefig("plots/boxplots_vs_class.png")
+plt.savefig('plots/boxplots_vs_class.png')
 plt.show()
 
 # Pairplot (may be heavy)
 sns.pairplot(round(df, 2), hue='class', plot_kws={'alpha': 0.5})
-plt.savefig("plots/pairplot.png")
+plt.savefig('plots/pairplot.png')
 plt.show()

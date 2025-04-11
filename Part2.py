@@ -8,7 +8,7 @@ from sklearn import tree
 from sklearn.neighbors import KNeighborsClassifier
 
 # Load processed data for features, generated in Part1.py
-df = pd.read_csv("car_cleaned.csv")
+df = pd.read_csv('car_cleaned.csv')
 
 # Split features and target
 x = df.drop('class', axis=1)                                                   # Features
@@ -30,7 +30,7 @@ for depth in dtConfig:
     model.fit(xTrain, yTrain)
     yPred = model.predict(xTest)
 
-    print(f"Decision Tree (max_depth={depth})")
+    print(f'Decision Tree (max_depth={depth})')
     print(classification_report(yTest, yPred, digits=3))
     
     tree.plot_tree(decision_tree=model, rounded=True)
@@ -54,7 +54,7 @@ for k in knnConfigs:
     model.fit(xTrain, yTrain)
     yPred = model.predict(xTest)
 
-    print(f"KNN (k={k})")
+    print(f'KNN (k={k})')
     print(classification_report(yTest, yPred, digits=3))
 
     cm = confusion_matrix(yTest, yPred)
@@ -70,6 +70,6 @@ for k in knnConfigs:
 
 
 # Summary
-print("Summary")
+print('Summary')
 for r in results:
-    print(f"{r['model']} ({r['param']}): Accuracy = {r['accuracy']:.3f}")
+    print(f'{r['model']} ({r['param']}): Accuracy = {r['accuracy']:.3f}')
